@@ -21,11 +21,37 @@ Keeper::~Keeper()
 	size = 0;
 }
 
+void Keeper::sort()
+{
+	if (size == 0)
+		throw 0;
+
+	if (size == 1)
+		return;
+
+	for (int i = 0; i < size - 1; )
+	{
+
+		if (list[i]->getFio() > list[i + 1]->getFio())
+		{
+			// поменять местами
+			Worker* temp = list[i];
+			list[i] = list[i + 1];
+			list[i + 1] = temp;
+			i = 0;
+		}
+		else
+		{
+			i++;
+		}
+	}
+}
 
 
 void Keeper::printAll()
 {
 	printf("All list items:\n");
+	sort();
 	for (int i = 0; i < size; i++)
 	{
 		cout << i + 1 << list[i] << endl;
@@ -51,7 +77,6 @@ int Keeper::add()
 {
 	Worker* new_Worker = new Worker;
 
-	
 	*this + new_Worker;
 
 	return 0;

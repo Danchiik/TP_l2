@@ -10,6 +10,8 @@ class Keeper
 	void del(int);
 	void operator+(Worker*);
 
+	void sort();
+
 public:
 
 	Keeper();
@@ -22,5 +24,9 @@ public:
 
 	void printAll();
 
+	Worker** getList()
+	{
+		return list;
+	}
 
 };

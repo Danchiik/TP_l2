@@ -13,101 +13,26 @@ class Worker
 
 public:
 
-	Worker()
-	{
-		cout << "Worker constructor" << endl;
-		fio = "unknown";
-		job = "unknown";
-		year = 1990;
-	}
+	Worker();
 
-	void setFio(string str)
-	{
-		fio = str;
-	}
+	void setFio(string str);
 
-	void setJob(string str)
-	{
-		job = str;
-	}
+	void setJob(string str);
 
-	void setYear(int y)
-	{
-		year = y;
-	}
+	void setYear(int y);
 
-	string getFio()
-	{
-		return fio;
-	}
+	string getFio();
 
-	string getJob()
-	{
-		return job;
-	}
+	string getJob();
 
-	int getYear()
-	{
-		return year;
-	}
+	int getYear();
 
 
 
-	friend std::istream& operator>>(std::istream& in, Worker& w)
-	{
-		std::cout << "fio: ";
-		in.clear();
-		in.ignore();
-		string str;
-		getline(in, str);
-		w.setFio(str);
+	friend std::istream& operator>>(std::istream& in, Worker& w);
 
-		std::cout << "job title: ";
-		in.clear();
-		getline(in, str);
-		w.setJob(str);
+	friend std::ostream& operator<<(std::ostream& os, Worker& w);
 
-		std::cout << "year: ";
-		in.clear();
-		int y;
-		takeInt(&y);
-		w.setYear(y);
-
-		in.sync();
-		return in;
-	}
-
-	friend std::ostream& operator<<(std::ostream& os,  Worker& w)
-	{
-		return os << w.getFio() << " " << w.getJob() << " works since:" << w.getYear();
-	}
-
-	void edit()
-	{
-		cout << "now value is: ";
-		cout << *this;
-
-		int c;
-		while (true)
-		{
-			printf("\n\tedit worker menu\n");
-			printf("-1 back\n\t1 edit\n");
-			takeInt(&c);
-			switch (c)
-			{
-			case -1:
-				return;
-
-			case 1:
-				printf("enter new  values\n");
-				cin >> *this;
-				break;
-
-			default:
-				printf("invalid input\n");
-
-			}
-		}
-	}
+	void edit();
 
 };
