@@ -6,7 +6,6 @@ class Keeper
 	int size;
 	Worker** list;
 
-
 	void del(int);
 	void operator+(Worker*);
 
@@ -24,9 +23,6 @@ public:
 
 	void printAll();
 
-	Worker** getList()
-	{
-		return list;
-	}
+	void search();
 
 };
