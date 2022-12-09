@@ -5,8 +5,8 @@ using namespace std;
 
 class Worker
 {
-	string FIO;
-	string job_title;
+	string fio;
+	string job;
 	int year;
 
 public:
@@ -14,16 +14,19 @@ public:
 	Worker()
 	{
 		cout << "Worker constructor" << endl;
+		fio = "unknown";
+		job = "unknown";
+		year = 1990;
 	}
 
 	void setFio(string str)
 	{
-		FIO = str;
+		fio = str;
 	}
 
 	void setJob(string str)
 	{
-		job_title = str;
+		job = str;
 	}
 
 	void setYear(int y)
@@ -33,17 +36,24 @@ public:
 
 	string getFio()
 	{
-		return FIO;
+		return fio;
 	}
 
 	string getJob()
 	{
-		return job_title;
+		return job;
 	}
 
 	int getYear()
 	{
 		return year;
+	}
+
+
+
+	friend std::ostream& operator<<(std::ostream& os,  Worker& w)
+	{
+		return os << w.getFio() << " " << w.getJob() << " works since:" << w.getYear();
 	}
 
 };
