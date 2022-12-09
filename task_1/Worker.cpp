@@ -50,7 +50,7 @@ std::istream& operator>>(std::istream& in, Worker& w)
 {
 	std::cout << "fio: ";
 	in.clear();
-	in.ignore();
+
 	string str;
 	getline(in, str);
 	w.setFio(str);
@@ -60,10 +60,13 @@ std::istream& operator>>(std::istream& in, Worker& w)
 	getline(in, str);
 	w.setJob(str);
 
-	std::cout << "year: ";
-	in.clear();
-	int y;
-	takeInt(&y);
+	int y = -1;
+	while (y <= 0 || y > 2022)
+	{
+		std::cout << "year: ";
+		in.clear();
+		takeInt(&y);
+	}
 	w.setYear(y);
 
 	in.sync();
@@ -72,19 +75,20 @@ std::istream& operator>>(std::istream& in, Worker& w)
 
 std::ostream& operator<<(std::ostream& os, Worker& w)
 {
-	return os << w.getFio() << " " << w.getJob() << " works since:" << w.getYear();
+	return os << w.getFio() << " " << w.getJob() << " works since: " << w.getYear();
 }
 
 void Worker::edit()
 {
-	cout << "now value is: ";
-	cout << *this;
+	
 
 	int c;
 	while (true)
 	{
 		printf("\n\tedit worker menu\n");
-		printf("-1 back\n\t1 edit\n");
+		printf("-1 back to element choice\n1 edit this one\n");
+		cout << "now value is: ";
+		cout << *this << endl;
 		takeInt(&c);
 		switch (c)
 		{

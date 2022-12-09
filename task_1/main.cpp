@@ -22,7 +22,7 @@
 
 */
 
-
+using namespace std;
 
 void menuList()
 {
@@ -34,7 +34,6 @@ void menuList()
 	printf("3 edit\n");
 	printf("4 remove\n");
 	printf("5 search\n");
-
 }
 
 int menu()
@@ -55,18 +54,44 @@ int menu()
 			menuList();
 			break;
 		case 1:
-			keep.printAll();
+			try {
+				keep.printAll();
+				}
+				catch (string e)
+				{
+					cout << "exeption: " << e << endl;
+				}
 			break;
 		case 2:
 			keep.add();
 			break;
 		case 3:
+			try {
 			keep.edit();
+				}
+				catch (string e)
+				{
+					cout << "exeption: " << e << endl;
+				}
 			break;
 		case 4:
+			try {
 			keep.remove();
+				}
+				catch (string e)
+				{
+					cout << "exeption: " << e << endl;
+				}
 			break;
-		
+		case 5:
+			try {
+				keep.search();
+			}
+			catch (string e)
+			{
+				cout << "exeption: " << e << endl;
+			}
+			break;
 		default:
 			printf("unknwon command inputed\nenter 0 to see menu\n");
 		}

@@ -28,7 +28,6 @@ public:
 	int getYear();
 
 
-
 	friend std::istream& operator>>(std::istream& in, Worker& w);
 
 	friend std::ostream& operator<<(std::ostream& os, Worker& w);

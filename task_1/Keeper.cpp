@@ -24,7 +24,7 @@ Keeper::~Keeper()
 void Keeper::sort()
 {
 	if (size == 0)
-		throw 0;
+		return;
 
 	if (size == 1)
 		return;
@@ -51,13 +51,14 @@ void Keeper::sort()
 void Keeper::printAll()
 {
 	printf("All list items:\n");
+	if (size == 0)
+		throw (string)"none found";
 	sort();
 	for (int i = 0; i < size; i++)
 	{
-		cout << i + 1 << list[i] << endl;
+		cout << i + 1 << " " << *list[i] << endl;
 	}
-	if (size == 0)
-		printf("none found\n");
+	
 }
 
 void Keeper::operator+(Worker* obj)
@@ -87,8 +88,7 @@ void Keeper::edit()
 {
 	if (size == 0)
 	{
-		printf("list is empty\n");
-		return;
+		throw (string)"list is empty";
 	}
 
 	int c = 0;
@@ -126,8 +126,7 @@ void Keeper::remove()
 {
 	if (size == 0)
 	{
-		printf("list is empty\n");
-		return;
+		throw (string)"list is empty";
 	}
 
 	int c = 0;
@@ -156,3 +155,28 @@ void Keeper::remove()
 	}
 }
 
+void Keeper::search()
+{
+	if( size == 0)
+		throw (string)"list is empty";
+
+	int yearSearch = -1;
+	cout << "enter years of work: ";
+	while( yearSearch<= 0)
+		takeInt(&yearSearch);
+
+	int count = 0; 
+	for (int i = 0; i < size; i++)
+	{
+		int stazh = 2022 - list[i]->getYear();
+		if (stazh >= yearSearch)
+		{
+			cout << *list[i] << endl;
+			count++;
+		}
+	}
+	if (count == 0)
+	{
+		cout << "none found" << endl;
+	}
+}
